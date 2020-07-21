@@ -1,0 +1,15 @@
+[package]
+name = "knet"
+version = "0.1.0"
+authors = ["Krys <aroulin@stundent.42.fr>"]
+edition = "2018"
+keywords = ["network", "read/write", "server", "client"]
+repository = "https://github.com/alexandre-roulin/knet"
+
+
+[dependencies]
+derive-knet =  { path = "./derive-knet"}
+simple_logger = "1.6.0"
+log = { version = "0.4" }
+futures = "0.3.0"
+async-std = "1"
