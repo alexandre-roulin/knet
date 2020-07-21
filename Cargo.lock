@@ -146,6 +146,8 @@ dependencies = [
 [[package]]
 name = "derive-knet"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9d740da5ff8cf659e8969df4d074560aed384573d9e033997df575a9de18fcc6"
 dependencies = [
  "proc-macro2 0.4.30",
  "quote 0.6.13",
