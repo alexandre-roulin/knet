@@ -6,6 +6,7 @@ edition = "2018"
 keywords = ["network", "read_and_write", "server", "client"]
 repository = "https://github.com/alexandre-roulin/knet"
 description = "A server and a client that can write and read at the same time."
+documentation = "https://docs.rs/knet/0.2.0/knet/"
 license = "MIT"
 
 [dependencies]
