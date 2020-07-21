@@ -9,6 +9,8 @@ enum InnerEvent<T> {
     Data((Id, T)),
 }
 
+/// The wrapper event for the server.
+/// It allow you to know when there is a new connection, a data or and drop receive  by the server
 #[derive(Debug)]
 pub enum Event<T> {
     NewConnection(Id),
@@ -32,6 +34,7 @@ pub struct InnerServer<T> {
     broker: Option<task::JoinHandle<Result<()>>>,
 }
 type ProtectedServer<T> = Arc<Mutex<InnerServer<T>>>;
+
 pub struct Server<T>(pub ProtectedServer<T>);
 
 impl<T: KnetTransform + Send + Debug + Sync + Clone + 'static> Server<T> {
