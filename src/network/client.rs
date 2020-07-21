@@ -13,7 +13,8 @@ impl<T: KnetTransform + Send + Clone + Sync + Debug + 'static> Client<T> {
     /* ******************************************************* */
     /*           Public                                        */
     /* ******************************************************* */
-    ///
+
+    ///Run the server on the `addr` adress and return and the server and Receiver 
     pub async fn run(addr: impl ToSocketAddrs) -> Result<(Self, Receiver<T>)> {
         let stream = TcpStream::connect(addr).await?;
         let stream = Arc::new(stream);
@@ -38,6 +39,7 @@ impl<T: KnetTransform + Send + Clone + Sync + Debug + 'static> Client<T> {
         Ok((client, receiver_event))
     }
 
+    ///Write the data to the server
     pub async fn write(client: ProtectedClient<T>, data: T) -> Result<()> {
         info!("dota dead");
         client.lock().await.sender.send(data).await?;
