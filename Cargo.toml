@@ -1,12 +1,12 @@
 [package]
 name = "knet"
-version = "0.3.0"
+version = "0.3.1"
 authors = ["Krys <roulin.alexandre@gmail.com>"]
 edition = "2018"
 keywords = ["network", "read_and_write", "server", "client"]
 repository = "https://github.com/alexandre-roulin/knet"
 description = "A server and a client that can write and read at the same time."
-documentation = "https://docs.rs/knet/0.3.0/knet/"
+documentation = "https://docs.rs/knet/0.3.1/knet/"
 license = "MIT"
 
 [dependencies]
