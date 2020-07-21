@@ -14,7 +14,7 @@ A server and a client that can write and read data asynchronously to and from a 
 
 # Example 
 
-```
+```rust,no_run
 #[derive(DeriveKnet, Debug, Clone, Copy)]
 enum Data {
   Integer(i32),
