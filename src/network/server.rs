@@ -35,7 +35,7 @@ type ProtectedServer<T> = Arc<Mutex<InnerServer<T>>>;
 pub struct Server<T>(pub ProtectedServer<T>);
 
 impl<T: KnetTransform + Send + Debug + Sync + Clone + 'static> Server<T> {
-    #[allow(dead_code)]
+    ///Run the server on the `addr` adress and return and the server and Receiver 
     pub async fn run(addr: impl ToSocketAddrs + Sync + Send) -> Result<(Self, Receiver<Event<T>>)> {
         let listener = TcpListener::bind(addr).await?;
         let (sender_event, receiver_event) = mpsc::unbounded::<Event<T>>();
@@ -60,6 +60,7 @@ impl<T: KnetTransform + Send + Debug + Sync + Clone + 'static> Server<T> {
         Ok((server, receiver_event))
     }
 
+    ///Write the data to all connection accept by the server
     pub async fn write_all(server: ProtectedServer<T>, data: T) -> Result<()> {
         for option in server.lock().await.connections.iter_mut() {
             if let Some(connection) = option {
@@ -73,6 +74,7 @@ impl<T: KnetTransform + Send + Debug + Sync + Clone + 'static> Server<T> {
         Ok(())
     }
 
+    ///Write the data to a specify connection
     pub async fn write(server: ProtectedServer<T>, data: T, id: Id) -> Result<()> {
         server
             .lock()
